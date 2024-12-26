@@ -1,4 +1,4 @@
-# ExceptionManagement - Java Exception Handling Exercises
+# Exception_Management - Java Exception Handling Exercises
 
 This project is a collection of **Java exercises** focused on learning and practicing **exception handling** concepts. The exercises have been divided into the following sub-projects:
 

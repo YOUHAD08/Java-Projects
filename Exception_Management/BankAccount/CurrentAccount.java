@@ -1,4 +1,4 @@
-package com.oop.projects.ExceptionManagement.BankAccount;
+package com.oop.projects.Exception_Management.BankAccount;
 
 public class CurrentAccount extends BankAccount{
     private double overdraft_limit;

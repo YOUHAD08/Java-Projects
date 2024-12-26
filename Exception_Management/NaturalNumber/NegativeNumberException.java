@@ -1,4 +1,4 @@
-package com.oop.projects.ExceptionManagement.NaturalNumbe;
+package com.oop.projects.Exception_Management.NaturalNumbe;
 
 public class NegativeNumberException extends Exception {
     private int false_number;

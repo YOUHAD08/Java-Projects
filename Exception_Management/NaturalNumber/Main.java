@@ -1,4 +1,4 @@
-package com.oop.projects.ExceptionManagement.NaturalNumbe;
+package com.oop.projects.Exception_Management.NaturalNumbe;
 
 public class Main {
     public static void main(String[] args) {
