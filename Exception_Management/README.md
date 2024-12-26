@@ -44,23 +44,24 @@ This project is a collection of **Java exercises** focused on learning and pract
 - Protects user accounts through exception handling.
 - Common exceptions handled:
     - Withdrawing more than the available balance.
-    - Depositing or withdrawing invalid amounts (e.g., negative or zero).
+    - Non-existent account.
+    - Withdrawing an amount that exceeds the overdraft limit.
 
 ---
 
 ### NaturalNumber
 
 - Validates natural numbers (positive integers > 0) and prevents invalid operations.
-- Throws custom exceptions like `InvalidNumberException` for invalid inputs.
+- Throws custom exceptions like `NegativeNumberException` , for invalid inputs, including attempts to decrement the number below zero..
 
 ---
 
 ## 🏆 Learning Objectives
 
-Through these exercises, students will learn:
+Through these exercises, i learned:
 
-1. Writing robust Java programs with **try-catch** blocks.
-2. Creating and using **custom exceptions**.
+1. Robust Java programming with **try-catch** blocks.
+2. How to Create and use **custom exceptions**.
 3. Practicing **input validation** and **defensive programming**.
 
 ---
