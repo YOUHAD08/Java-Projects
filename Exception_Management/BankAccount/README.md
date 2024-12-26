@@ -1,119 +1,191 @@
-# BankAccount - Exception Management Exercise
+# 🏦 BankAccount - Exception Management with Savings & Current Accounts
 
-This is a **Java project** created as part of a school exercise to practice **exception management**. The project implements a simple **Bank Account** system to demonstrate key programming concepts, including **try-catch blocks**, **custom exceptions**, and proper error handling.
+This **Java-based console application** serves as a banking simulation to manage accounts, handle various account types (**Savings** and **Current**), and demonstrate robust exception handling. The project includes the use of **custom exceptions**, **inheritance**, and **object-oriented programming (OOP)** principles.
 
----
-
-## 📝 Overview
-
-The **BankAccount** project allows users to perform basic operations on a bank account, such as:
-
-- Depositing money.
-- Withdrawing money.
-- Checking the account balance.
-
-The primary focus of the project is to handle edge cases and exceptional scenarios, such as:
-
-- Attempting to withdraw more money than available in the account.
-- Depositing or withdrawing invalid amounts (e.g., negative or zero).
-- Ensuring safe and reliable account operations through exception handling.
+Key functionalities include deposit operations, withdrawals with balance checks, and the management of specialized account types while handling edge cases through custom exceptions.
 
 ---
 
-## 📁 Project Structure
+## 📋 Table of Contents
+
+1. [📖 Overview](#-overview)
+2. [🗂 Project Structure](#-project-structure)
+3. [✨ Features](#-features)
+4. [🛠️ Getting Started](#%EF%B8%8F-getting-started)
+5. [💻 Usage Instructions](#-usage-instructions)
+   - [Account Operations](#account-operations)
+6. [🛑 Exception Handling](#-exception-handling)
+7. [🚀 Future Enhancements](#-future-enhancements)
+8. [📢 Feedback](#-feedback)
+
+---
+
+## 📖 Overview
+
+The **BankAccount** project allows users to:
+
+- Manage **Savings** and **Current** bank accounts with tailored features.
+- Perform transactions such as:
+   - Deposits.
+   - Withdrawals with constraints (e.g., account-specific rules).
+   - Balance inquiries.
+- Handle account-level errors efficiently using **custom exceptions**.
+
+This project emphasizes **exception management** using custom exceptions to handle cases like:
+
+1. Attempting to access non-existent accounts.
+2. Insufficient funds for withdrawals.
+3. Invalid operations (e.g., withdrawing more than the available overdraft limit).
+
+---
+
+## 🗂 Project Structure
+
+The project consists of six files, designed for modularity and clarity:
 
 ```plaintext
 BankAccount/
 ├── src/
-│   ├── BankAccount.java     # Core BankAccount class
-│   ├── Main.java            # Entry point for the application
-│   ├── InsufficientFundsException.java  # Custom exception for insufficient funds
-├── README.md                # Project documentation
+│   ├── AccountNotFoundException.java       # Custom exception for accessing invalid accounts
+│   ├── BankAccount.java                    # Abstract base class for bank accounts (Savings and Current)
+│   ├── CurrentAccount.java                 # Subclass for Current Accounts with overdraft functionality
+│   ├── InsufficientFundsException.java     # Custom exception for handling insufficient balance errors
+│   ├── SavingsAccount.java                 # Subclass for Savings Accounts with withdrawal constraints
+│   ├── Main.java                           # Entry point for the application (menu-driven program)
+└── README.md                               # Project documentation
 ```
 
 ---
 
-## ▶️ Getting Started
+## ✨ Features
 
-1. **Clone the Repository (if applicable)**:
+### 1. **BankAccount Program**
+- **Core Bank Account Operations:**
+   - Deposit funds into accounts.
+   - Withdraw funds with balance and type-specific checks.
+   - Display available balance.
+- Handles **Savings** and **Current** accounts with tailored behavior:
+   - **SavingsAccount**: Withdrawal limits may apply.
+   - **CurrentAccount**: Supports overdraft withdrawals within a predefined limit.
+
+### 2. **Exception Handling**
+- Invalid actions like attempting to overdraw or access nonexistent accounts are handled via custom exceptions.
+- Ensures secure and smooth application execution.
+
+### 3. **SavingsAccount Class**
+- Specialized functionality for savings accounts with additional constraints for handling deposits and withdrawals.
+
+### 4. **CurrentAccount Class**
+- Includes overdraft management for current accounts.
+- Ensures overdrafts don't exceed set limits through custom exceptions.
+
+### 5. **Custom Exceptions**
+- **InsufficientFundsException**: Prevents operations when funds are unavailable.
+- **AccountNotFoundException**: Thrown when attempting to interact with invalid or nonexistent accounts.
+
+---
+
+## 🛠️ Getting Started
+
+### Prerequisites
+
+To run this project, ensure the following software/tools are installed:
+
+- **Java JDK**: Version 11 or higher.
+- A suitable Java IDE like **IntelliJ IDEA**, **Eclipse**, or **VS Code**.
+
+### Installation
+
+1. Clone or download the project repository:
    ```bash
-   git clone https://github.com/example-user/BankAccount.git
+   git clone https://github.com/your-repo-name/BankAccount.git
    ```
-
-2. **Navigate to the Project Folder**:
+2. Navigate to the project folder:
    ```bash
-   cd BankAccount
+   cd BankAccount/src
    ```
-
-3. **Compile and Run the Project**:
+3. Compile the project:
    ```bash
    javac Main.java
+   ```
+4. Run the program:
+   ```bash
    java Main
    ```
 
 ---
 
-## 💻 How to Use the Program
+## 💻 Usage Instructions
 
-1. **Run the Program**:  
-   The program will guide the user through different operations like depositing and withdrawing money.
+### Account Operations
 
-2. **Exception Scenarios**:  
-   The program demonstrates proper exception handling for situations like:
-    - Trying to withdraw an amount greater than the available balance.
-    - Entering non-numeric or invalid values for operations.
-    - Attempting to deposit or withdraw invalid amounts.
+When you run the program, you will experience a **menu-driven interface** with options such as:
 
-3. **Example Code Snippet**:
+1. **Create Account**:  
+   Create a new Savings or Current account by specifying account details.
+
+2. **Deposit into Account**:  
+   Add funds to an existing account by providing the account ID.
+
+3. **Withdraw from Account**:  
+   Withdraw funds based on the account's balance (with constraints for overdrafts and withdrawal limits).
+
+4. **Check Account Balance**:  
+   View the current balance of a savings or current account.
+
+5. **Exit**:  
+   Close the program.
+
+---
+
+## 🛑 Exception Handling
+
+### 1. **InsufficientFundsException**
+- **Purpose**: Prevents withdrawals when the requested amount exceeds the available balance (or overdraft limit for current accounts).
+- **Thrown By**: Withdrawal operation.
+
    ```java
-   try {
-       BankAccount account = new BankAccount(1000);
-       account.withdraw(1500); // This will throw an InsufficientFundsException
-   } catch (InsufficientFundsException e) {
-       System.out.println("Error: " + e.getMessage());
+   if (withdrawAmount > balance + overdraftLimit) {
+       throw new InsufficientFundsException("Insufficient funds for this transaction.");
+   }
+   ```
+
+### 2. **AccountNotFoundException**
+- **Purpose**: Raised when attempting to access an account that does not exist.
+- **Thrown By**: Operations like deposit, withdraw, or balance check on invalid account IDs.
+
+   ```java
+   if (account == null) {
+       throw new AccountNotFoundException("Account not found with ID: " + accountId);
    }
    ```
 
 ---
 
-## 🛠️ Key Learning Objectives
+## 🚀 Future Enhancements
 
-This project is designed to help students practice:
+1. **Transaction History**:  
+   Record transaction logs (deposits/withdrawals) for each account.
 
-1. Writing robust error handling using **try-catch** blocks.
-2. Creating and using **custom exceptions**.
-3. Validating user input and handling invalid data gracefully.
-4. Improving the reliability of Java code through defensive programming techniques.
+2. **Persistent Storage**:  
+   Implement a database or file storage system to save account and transaction data between sessions.
 
----
+3. **Multiple Users**:  
+   Enhance the system to handle multiple users with associated login credentials.
 
-## 📚 Example Exceptions in the Project
+4. **Interest Calculation**:  
+   Add periodic interest accrual for savings accounts.
 
-### InsufficientFundsException
-A custom exception that is thrown when a withdrawal amount exceeds the current balance.
-
-```java
-public class InsufficientFundsException extends Exception {
-    public InsufficientFundsException(String message) {
-        super(message);
-    }
-}
-```
-
-### Example Use
-```java
-if (withdrawAmount > balance) {
-    throw new InsufficientFundsException("Withdrawal amount exceeds available balance.");
-}
-```
+5. **Graphical Interface (GUI)**:  
+   Replace the command-line interface with a modern GUI using **JavaFX** or **Swing**.
 
 ---
-
 
 ## 📢 Feedback
 
-If you have any questions or feedback about this code or concept, feel free to reach out to your instructor or classmates.
+If you have suggestions, improvements, or need assistance, feel free to reach out or fork this repository to contribute your changes!
 
 ---
 
-> _"Programming isn't about just writing code; it's about handling the unexpected."_
+> _"Handling exceptions gracefully is the hallmark of robust software."_  
+Happy Coding! 🚀
