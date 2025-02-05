@@ -1,0 +1,3 @@
+[submodule "Employee-Management-Application"]
+	path = Employee-Management-Application
+	url = https://github.com/YOUHAD08/Employee-Management-Application.git
