@@ -13,10 +13,10 @@ public class Main {
             natural_number.setVal(-1);
 
             //  Test decrement() Method
-            System.out.println(natural_number.getVal());
+            natural_number.decrement();
 
             // Retrieve Natural_Number
-            natural_number.decrement();
+            System.out.println(natural_number.getVal());
         }
         catch (NegativeNumberException e){
             System.out.println(e.getMessage());
